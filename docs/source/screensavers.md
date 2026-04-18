@@ -26,9 +26,54 @@ The **Screensavers** tab lets you upload, manage, and remove custom Kindle sleep
 
 The tool auto-detects resolution from the Kindle serial number. Supported devices include all e-ink Kindles from Kindle 1 through Kindle Scribe Colorsoft (2025), covering resolutions from 600×800 to 1860×2480.
 
+## FBInk Screensaver Mode
+
+An alternative screensaver rendering method is available that uses [FBInk](https://github.com/NiLuJe/FBInk) to draw screensaver images directly to the e-ink framebuffer instead of relying on the Kindle's built-in `blanket` screensaver module.
+
+### Why use it?
+
+The stock screensaver module is strict about image format — a malformed PNG (wrong bit depth, incorrect resolution, bad encoding) can cause the Kindle to freeze on sleep, sometimes requiring a hard reboot or USB recovery. The FBInk method avoids this entirely because the image is rendered by FBInk rather than the firmware's blanket process. If an image fails to load, FBInk simply reports an error and the device sleeps with a blank screen instead of crashing.
+
+This makes it **safer for user-uploaded screensavers**, especially when images are uploaded through the web UI or copied to the device manually.
+
+### How to enable it
+
+1. Open KUAL
+2. Under "Kindle Series Manager", tap **Enable FBInk Screensaver**
+3. The daemon starts in the background and takes over screensaver rendering
+
+The daemon cycles through the same `bg_ss*.png` images in `/usr/share/blanket/screensaver/` that the stock screensaver uses, so uploading images through the Screensavers web UI tab works exactly the same way. The only difference is how the images are drawn to the screen.
+
+To disable it, open KUAL and tap **Disable FBInk Screensaver**. The stock screensaver is restored immediately.
+
+### How it works
+
+When enabled, the daemon:
+
+1. Unloads the stock `screensaver` module from the `blanket` process
+2. Listens for `goingToScreenSaver` events from `com.lab126.powerd`
+3. On sleep: stops the `pillow` overlay service and draws the next screensaver image with FBInk
+4. On wake: restarts `pillow` and triggers an X11 refresh so the app repaints
+
+The device still sleeps and wakes normally. Battery life is unaffected.
+
+### Requirements
+
+- A full-featured FBInk binary with image support must be available on the device (the version bundled with KOReader is a minimal build without image support — the version from `libkh` or MRInstaller works)
+- Jailbroken Kindle with KUAL installed
+
+### Using both features together
+
+The recommended workflow is:
+
+1. Use the **Screensavers** web UI tab to upload, crop, and manage your screensaver images
+2. Enable **FBInk Screensaver** in KUAL for safer rendering
+
+The web UI handles image conversion (resize, grayscale, proper PNG encoding) and places files in the screensaver folder. The FBInk daemon picks them up and draws them. You get the convenience of the web uploader with the stability of FBInk rendering.
+
 ## Important Notes
 
-- **Disable "Show covers on lock screen"** in Kindle Settings > Screen & Brightness, otherwise custom screensavers won't appear
+- **Disable "Show covers on lock screen"** in Kindle Settings > Screen & Brightness, otherwise custom screensavers won't appear (not required when using FBInk Screensaver mode)
 - **Ads/Special Offers** must be removed first (paid removal or jailbreak ad-disable script)
-- Images must be 8-bit grayscale PNG at the device's exact resolution — the upload tool handles this conversion automatically, but uploading malformed images manually can cause the Kindle to freeze on sleep
+- Images must be 8-bit grayscale PNG at the device's exact resolution — the upload tool handles this conversion automatically, but uploading malformed images manually can cause the Kindle to freeze on sleep when using the stock screensaver (the FBInk method is not affected)
 - Factory screensavers (`bg_ss00.png` through `bg_ss06.png`) can be disabled and re-enabled without deleting them
