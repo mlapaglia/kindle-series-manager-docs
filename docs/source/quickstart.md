@@ -19,6 +19,8 @@
 4. Open that URL on your phone or PC (same WiFi network)
 5. Tap **Create Series**, name it, select your books, drag them into reading order, and hit Create
 
+![Create Series UI](https://github.com/user-attachments/assets/e573c6fb-ef1f-47ca-b429-c755c5631a91)
+
 ## Starting the Web UI
 
 1. Make sure WiFi is on

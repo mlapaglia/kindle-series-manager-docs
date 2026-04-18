@@ -2,6 +2,8 @@
 
 The **Screensavers** tab lets you upload, manage, and remove custom Kindle sleep screen images through the web UI.
 
+![Screensavers UI](https://github.com/user-attachments/assets/b227f533-8dd7-4d6f-926f-6208b176d013)
+
 ## How It Works
 
 1. Go to the **Screensavers** tab in the web UI

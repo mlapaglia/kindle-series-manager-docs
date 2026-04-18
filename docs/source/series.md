@@ -1,5 +1,7 @@
 # Series Management
 
+![Grouped series on Kindle](https://github.com/user-attachments/assets/4e2eebce-bf5d-4506-b43b-6c2fb6bc66e0)
+
 ## Creating a Series
 
 1. Tap **Create Series** in the web UI
@@ -25,3 +27,5 @@
 ## KU and Prime Reading Badges
 
 You can control the appearance of the "Kindle Unlimited" and "Prime Reading" badges when creating or modifying a series.
+
+![KU and Prime Reading badges](https://github.com/user-attachments/assets/f430fe48-9e44-4cfd-a9d7-fd6c23e2caf9)
