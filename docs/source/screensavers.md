@@ -52,8 +52,10 @@ When enabled, the daemon:
 
 1. Unloads the stock `screensaver` module from the `blanket` process
 2. Listens for `goingToScreenSaver` events from `com.lab126.powerd`
-3. On sleep: stops the `pillow` overlay service and draws the next screensaver image with FBInk
-4. On wake: restarts `pillow` and triggers an X11 refresh so the app repaints
+3. On sleep: raises a full-screen X11 shield window to block status bar repaints, then draws the next screensaver image with FBInk
+4. On wake: removes the shield window and triggers an X11 refresh so the app repaints
+
+The shield window (`ss_shield`) is a small statically-linked ARM binary that creates an override-redirect X11 window covering the entire screen. This prevents the system status bar (clock, wifi, battery indicators) from painting over the screensaver image during the period between sleep activation and device suspend. The stock screensaver achieves this by creating its window at the highest Z-order through the proprietary `libblanket` API; `ss_shield` accomplishes the same result using standard X11 override-redirect, which bypasses the window manager entirely.
 
 The device still sleeps and wakes normally. Battery life is unaffected.
 
