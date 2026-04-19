@@ -61,8 +61,8 @@ The device still sleeps and wakes normally. Battery life is unaffected.
 
 ### Requirements
 
-- A full-featured FBInk binary with image support must be available on the device (the version bundled with KOReader is a minimal build without image support — the version from `libkh` or MRInstaller works)
 - Jailbroken Kindle with KUAL installed
+- A full-featured FBInk binary with image support is included in the extension package
 
 ### Using both features together
 
