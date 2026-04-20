@@ -2,7 +2,7 @@
 
 The **Calibre** tab lets you browse your [Calibre](https://calibre-ebook.com/) library from the web UI and download books directly to your Kindle over WiFi — no USB cable or email delivery needed.
 
-![Calibre UI](https://github.com/user-attachments/assets/cc125d83-399c-4850-aae6-7250d9baecb8)
+![Calibre UI](https://github.com/user-attachments/assets/9dcf65c0-01e3-422e-a635-e1b5c4fd0eb6)
 
 ## Prerequisites
 
