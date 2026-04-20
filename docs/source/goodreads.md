@@ -35,4 +35,4 @@ When you enable Goodreads Sync via KUAL, the extension installs an upstart job (
 - If login fails, check that your credentials are correct and that you're using email login (not Amazon SSO)
 - If books don't match, make sure they're on your Goodreads "currently-reading" shelf with titles that closely match the Kindle book titles
 - Session cookies may expire — if syncs start failing, click **Sign In to Goodreads** again from the web UI
-- Log file location on the Kindle: `/mnt/base-us/extensions/kindle-series-manager/goodreads/gr_sync.log`
+- Log file location on the Kindle: `/mnt/us/extensions/kindle-series-manager/goodreads/gr_sync.log`

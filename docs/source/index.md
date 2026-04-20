@@ -18,6 +18,7 @@ The extension runs a lightweight HTTP server on the Kindle (a static busybox bin
 - **Create Series** — two-panel interface: pick books from your library on the right, they appear in the reading order panel on the left. Drag to reorder. Optionally provide an Amazon series ASIN for better firmware integration. Control program badge display (KU/Prime Reading)
 - **Progress Tracking** — configure Goodreads credentials, sign in, build book mappings, and monitor the sync service status and logs
 - **Screensavers** — upload custom sleep screen images with drag-and-drop, auto-resize, grayscale conversion, and a crop editor. Manage active and disabled screensavers
+- **Calibre** — browse and download books from a Calibre Content server on your network. Search, sort, paginate through your library, and bulk download to the Kindle
 
 ```{toctree}
 :maxdepth: 2
@@ -27,6 +28,7 @@ quickstart
 series
 goodreads
 screensavers
+calibre
 cli
 backup
 ```
